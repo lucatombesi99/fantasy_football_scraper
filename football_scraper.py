@@ -37,7 +37,6 @@ for i in range(len(players)):
     players[i]=players[i][1:]
 
 
-print(players[3])
 driver.get(url) 
 time.sleep(5)
 WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH,"//*[@id=\"iubenda-cs-banner\"]/div/div/div/div[3]/div[2]/button[2]"))).click()
@@ -82,10 +81,6 @@ for k in range(46):
     c=b.find_all(["tr"])
     for j in c:
         d=j.find_all(["td"])
-        print(d[0].text.split()[0])
-        print(d[2].text.split()[0].lower())
-        print(d[6].text)
-        print(d[2].text.split()[0].lower() in players)
         if((d[0].text.split()[0]=="P") and(d[4].text.split()[0]!="0") and( d[6].text!='')):
             nameP.append(d[2].text.split()[0])
             squadraP.append(d[1].text)
@@ -98,9 +93,6 @@ for k in range(46):
 
             try:
                 q=round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2)
-                print("hey")
-                print(round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2))
-                print("cioè wooo?")
                 fantaMediaP.append(float(d[6].text))
 
             except:
@@ -118,9 +110,6 @@ for k in range(46):
 
             try:
                 q=round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2)
-                print("hey")
-                print(round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2))
-                print("cioè wooo?")
                 fantaMediaD.append(float(d[6].text))
 
             except:
@@ -138,9 +127,6 @@ for k in range(46):
 
             try:
                 q=round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2)
-                print("hey")
-                print(round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2))
-                print("cioè wooo?")
                 fantaMediaC.append(float(d[6].text))
 
             except:
@@ -158,9 +144,6 @@ for k in range(46):
 
             try:
                 q=round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2)
-                print("hey")
-                print(round((float(d[6].text)*float(d[4].text.split()[0]))//(float(d[3].text)+1),2))
-                print("cioè wooo?")
                 fantaMediaA.append(float(d[6].text))
 
             except:
@@ -171,8 +154,6 @@ for k in range(46):
     pages=WebDriverWait(driver,10).until(
         EC.presence_of_element_located((By.ID,"players_list_next"))
     )
-    print("semo alla paggina:")
-    print(k)
     pages.click()
 
     time.sleep(2)
@@ -216,20 +197,6 @@ with open("astastatsA","a",newline="") as f:
         for i in range(len(nameA)):
             thewriter.writerow({"name": nameA[i],"giocabile": giocabileA[i], "fantaM": fantaMediaA[i], "quotazione":quotazioneA[i],"partitegioc":partitegiocateA[i],"squadra":squadraA[i]}) 
 
-
-print("finito")
-
-
-print(len(nameP))
-print(len(squadraP))
-print(len(fantaMediaP))
-print(len(partitegiocateP))
-print(len(quotazioneP))
-
-print(len(nameD))
-
-print(len(nameC))
-print(len(nameA))
 
 
 
